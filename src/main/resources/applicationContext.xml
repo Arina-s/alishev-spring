@@ -10,8 +10,9 @@
     <context:annotation-config/>
     <context:component-scan base-package="org.example"/>
 
-    <bean id="testBean" class="org.example.TestBean">
-        <constructor-arg value="Nioly"/>
+    <bean id="music" class="org.example.PopMusic">
+
     </bean>
+
 
 </beans>
