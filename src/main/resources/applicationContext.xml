@@ -10,7 +10,7 @@
     <!--    <context:component-scan base-package="org.example"/>-->
     <context:property-placeholder location="classpath:application.properties"/>
 
-    <bean id="classicMusic" class="org.example.ClassicMusic">
+    <bean id="classicMusic" class="org.example.ClassicMusic" init-method="myInit">
         <property name="name">
             <list>
                 <value>Classic1</value>
@@ -21,17 +21,15 @@
         <property name="duration" value="3"/>
     </bean>
 
-    <bean id="popMusic" class="org.example.PopMusic">
-        <property name="name" value="Dima"/>
-        <property name="duration" value="2"/>
+    <bean id="popMusic" class="org.example.PopMusic" init-method="myInit" factory-method="getPopMusic">
     </bean>
 
-    <bean id="rockMusic" class="org.example.RockMusic">
+    <bean id="rockMusic" class="org.example.RockMusic" init-method="myInit" destroy-method="myDestroy">
         <property name="name" value="Beatls"/>
         <property name="duration" value="2"/>
     </bean>
 
-    <bean id="musicPlayer" class="org.example.MusicPlayer">
+    <bean id="musicPlayer" class="org.example.MusicPlayer" destroy-method="myDestroy">
         <property name="number" value="${musicPlayer.number}"/>
         <property name="musicList">
             <list>

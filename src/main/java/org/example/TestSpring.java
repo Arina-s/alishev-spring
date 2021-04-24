@@ -6,12 +6,22 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class TestSpring {
 
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext(
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
                 "applicationContext.xml"
         );
-        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+        MusicPlayer musicPlayer1 = context.getBean("musicPlayer", MusicPlayer.class);
         MusicPlayer musicPlayer2 = (MusicPlayer) context.getBean("musicPlayer");
-        musicPlayer.playMusic();
+        System.out.println(musicPlayer1 == musicPlayer2);
+        System.out.println(musicPlayer1.hashCode());
+        System.out.println(musicPlayer2.hashCode());
+        musicPlayer1.setNumber("444444");
+        System.out.println("------changed value-------");
+        System.out.println(musicPlayer1 == musicPlayer2);
+        System.out.println(musicPlayer1);
+        System.out.println(musicPlayer2);
+        musicPlayer1.playMusic();
+        musicPlayer2.playMusic();
+        context.close();
     }
 
 }

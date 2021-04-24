@@ -13,6 +13,10 @@ public class ClassicMusic implements Music {
     private List<String> name;
     private int duration;
 
+    private void myInit() {
+        System.out.println("-------INITIALIZATION---CLASSICAL--------");
+    }
+
     @Override
     public String getSong() {
         return this + "Classic music";

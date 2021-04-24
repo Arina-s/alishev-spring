@@ -1,9 +1,11 @@
 package org.example;
 
-import lombok.Data;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class MusicPlayer {
 
     private List<Music> musicList;
@@ -14,4 +16,7 @@ public class MusicPlayer {
         musicList.forEach((music) -> System.out.println("Playing music: " + music));
     }
 
+    private void myDestroy() {
+        System.out.println("_______DESTROY________");
+    }
 }
