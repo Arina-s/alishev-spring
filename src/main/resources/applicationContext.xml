@@ -7,12 +7,39 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:annotation-config/>
-    <context:component-scan base-package="org.example"/>
+    <!--    <context:component-scan base-package="org.example"/>-->
+    <context:property-placeholder location="classpath:application.properties"/>
 
-    <bean id="music" class="org.example.PopMusic">
-
+    <bean id="classicMusic" class="org.example.ClassicMusic">
+        <property name="name">
+            <list>
+                <value>Classic1</value>
+                <value>Classic2</value>
+                <value>Classic3</value>
+            </list>
+        </property>
+        <property name="duration" value="3"/>
     </bean>
 
+    <bean id="popMusic" class="org.example.PopMusic">
+        <property name="name" value="Dima"/>
+        <property name="duration" value="2"/>
+    </bean>
+
+    <bean id="rockMusic" class="org.example.RockMusic">
+        <property name="name" value="Beatls"/>
+        <property name="duration" value="2"/>
+    </bean>
+
+    <bean id="musicPlayer" class="org.example.MusicPlayer">
+        <property name="number" value="${musicPlayer.number}"/>
+        <property name="musicList">
+            <list>
+                <ref bean="popMusic"/>
+                <ref bean="rockMusic"/>
+                <ref bean="classicMusic"/>
+            </list>
+        </property>
+    </bean>
 
 </beans>

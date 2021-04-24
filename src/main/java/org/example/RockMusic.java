@@ -3,19 +3,18 @@ package org.example;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ClassicMusic implements Music {
+public class RockMusic implements Music {
 
-    private List<String> name;
+    private String name;
     private int duration;
 
     @Override
     public String getSong() {
-        return this + "Classic music";
+        return this + "Rock music";
     }
 
 }

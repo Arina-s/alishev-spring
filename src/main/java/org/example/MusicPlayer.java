@@ -1,14 +1,17 @@
 package org.example;
 
-import lombok.AllArgsConstructor;
+import lombok.Data;
+import java.util.List;
 
-@AllArgsConstructor
+@Data
 public class MusicPlayer {
 
-    private final Music music;
+    private List<Music> musicList;
+    private String number;
 
     public void playMusic() {
-        System.out.println("Playing music: " + music.getSong());
+        System.out.println("Number: " + number);
+        musicList.forEach((music) -> System.out.println("Playing music: " + music));
     }
 
 }
