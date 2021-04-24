@@ -3,11 +3,14 @@ package org.example;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Component
 public class ClassicMusic implements Music {
 
     private List<String> name;
