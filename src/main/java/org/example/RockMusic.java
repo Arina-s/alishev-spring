@@ -1,15 +1,9 @@
 package org.example;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-@Component()
+@Component
 public class RockMusic implements Music {
 
     @Value("Rock")
@@ -28,6 +22,14 @@ public class RockMusic implements Music {
     @Override
     public String getSong() {
         return this + "Rock music";
+    }
+
+    @Override
+    public String toString() {
+        return "RockMusic{" +
+                "name='" + name + '\'' +
+                ", duration=" + duration +
+                '}';
     }
 
 }

@@ -1,12 +1,8 @@
 package org.example;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
-@Data
-@Component("music")
+@Component
 public class PopMusic implements Music {
 
     private String name;

@@ -1,19 +1,25 @@
 package org.example;
 
-import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-@Getter
-@Setter
+@Component
 public class MusicPlayer {
 
-    private List<Music> musicList;
+    private RockMusic rockMusic;
+    private ClassicMusic classicMusic;
     private String number;
+
+    @Autowired
+    public MusicPlayer(RockMusic rockMusic, ClassicMusic classicMusic) {
+        this.rockMusic = rockMusic;
+        this.classicMusic = classicMusic;
+    }
 
     public void playMusic() {
         System.out.println("Number: " + number);
-        musicList.forEach((music) -> System.out.println("Playing music: " + music));
+        System.out.println("Playing music: " + rockMusic);
+        System.out.println("Playing music: " + classicMusic);
     }
 
     private void myDestroy() {
