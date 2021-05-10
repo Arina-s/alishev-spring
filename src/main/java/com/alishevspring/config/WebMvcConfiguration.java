@@ -1,5 +1,6 @@
 package com.alishevspring.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,11 +17,8 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 @ComponentScan("com.alishevspring")
 public class WebMvcConfiguration implements WebMvcConfigurer {
 
-    private final ApplicationContext applicationContext;
-
-    public WebMvcConfiguration(ApplicationContext applicationContext) {
-        this.applicationContext = applicationContext;
-    }
+    @Autowired
+    private ApplicationContext applicationContext;
 
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
