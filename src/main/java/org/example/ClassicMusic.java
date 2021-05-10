@@ -1,30 +1,28 @@
 package org.example;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Value;
 
-import java.util.List;
-
-@Component
 public class ClassicMusic implements Music {
 
-    private List<String> name;
-    private int duration;
+    @Value("${classicMusic.name}")
+    private String name;
 
-    private void myInit() {
-        System.out.println("-------INITIALIZATION---CLASSICAL--------");
+    @Value("${classicMusic.value}")
+    private int value;
+    private String[] songs = new String[]{"Bethoven", "Bax", "Mozart"};
+
+    public String getName() {
+        return name;
+    }
+
+    public int getValue() {
+        return value;
     }
 
     @Override
     public String getSong() {
-        return this + "Classic music";
-    }
-
-    @Override
-    public String toString() {
-        return "ClassicMusic{" +
-                "name=" + name +
-                ", duration=" + duration +
-                '}';
+        int index = (int) (Math.random() * 3);
+        return "Genre: " + name + " " + songs[index];
     }
 
 }

@@ -1,28 +1,30 @@
 package org.example;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PopMusic implements Music {
 
+    @Value("${popMusic.name}")
     private String name;
-    private int duration;
 
-    private PopMusic() {
+    @Value("${popMusic.value}")
+    private int value;
+    private String[] songs = new String[]{"El Problem", "Cadillac", "Knee Socks"};
+
+    public String getName() {
+        return name;
     }
 
-    public static PopMusic getPopMusic() {
-        System.out.println("create with factory");
-        return new PopMusic();
-    }
-
-    private void myInit() {
-        System.out.println("-------INITIALIZATION---POP--------");
+    public int getValue() {
+        return value;
     }
 
     @Override
     public String getSong() {
-        return this + "Pop music";
+        int index = (int) (Math.random() * 3);
+        return "Genre: " + name + " " + songs[index];
     }
 
 }

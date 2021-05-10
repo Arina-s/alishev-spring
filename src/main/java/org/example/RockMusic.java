@@ -6,30 +6,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class RockMusic implements Music {
 
-    @Value("Rock")
+    @Value("Rock Music")
     private String name;
-    @Value("23")
-    private int duration;
 
-    private void myInit() {
-        System.out.println("-------INITIALIZATION---ROCK--------");
-    }
-
-    private void myDestroy() {
-        System.out.println("-------DESTROY---ROCK--------");
-    }
+    private String[] songs = new String[]{"La La La Rock", "Rock and Rol", "Brazers"};
 
     @Override
     public String getSong() {
-        return this + "Rock music";
-    }
-
-    @Override
-    public String toString() {
-        return "RockMusic{" +
-                "name='" + name + '\'' +
-                ", duration=" + duration +
-                '}';
+        int index = (int) (Math.random() * 3);
+        return "Genre: " + name + " " + songs[index];
     }
 
 }

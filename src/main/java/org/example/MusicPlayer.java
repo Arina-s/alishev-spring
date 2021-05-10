@@ -1,28 +1,37 @@
 package org.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import java.util.List;
+
+
 @Component
+@Scope("singleton")
 public class MusicPlayer {
 
-    private RockMusic rockMusic;
-    private ClassicMusic classicMusic;
-    private String number;
+    private List<Music> musicList;
 
     @Autowired
-    public MusicPlayer(RockMusic rockMusic, ClassicMusic classicMusic) {
-        this.rockMusic = rockMusic;
-        this.classicMusic = classicMusic;
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
+    }
+
+    @PostConstruct
+    public void doMyInit() {
+        System.out.println("INITIALIZATION");
+    }
+
+    @PreDestroy
+    public void doMyDestroy() {
+        System.out.println("DESTROY");
     }
 
     public void playMusic() {
-        System.out.println("Number: " + number);
-        System.out.println("Playing music: " + rockMusic);
-        System.out.println("Playing music: " + classicMusic);
+        musicList.forEach(music -> System.out.println(music.getSong()));
     }
 
-    private void myDestroy() {
-        System.out.println("_______DESTROY________");
-    }
 }
